@@ -1,0 +1,65 @@
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Scanner;
+import javax.swing.InputMap;
+
+class Nilai
+{
+    private ArrayList<Integer> list = new ArrayList<Integer>();
+    private int sum;
+    private int sumAfter;
+    private int index;
+    private int indexAfter;
+
+    Nilai()
+    {
+        this.list.clear();
+        this.sum=0;
+        this.sumAfter=0;
+        this.index=0;
+        this.indexAfter=0;
+    }
+
+    public void add(int num) 
+    {
+        this.list.add(num);
+        this.sum+=num;
+        this.index++;
+        this.sumAfter=sum;
+        this.indexAfter=this.index;
+    }
+
+    public void remove(int index, int hadRemove)
+    {
+        this.sumAfter-=this.list.get(index-1-hadRemove);
+        this.indexAfter --;
+        list.remove(index-1-hadRemove);
+    }
+
+    public void print()
+    {
+        System.out.println(this.sum + " " + this.index + "\n");
+        System.out.println(this.sumAfter + " " + this.indexAfter + "\n");
+    }
+
+}
+
+public class Mainjava 
+{
+    public static void main(String[] args)
+    {
+        Nilai nilai = new Nilai();
+        Scanner inp = new Scanner(System.in);
+        int x=0;
+        while (inp.hasNextInt()) 
+        {
+            x=inp.nextInt();
+            if(x==-9) break;
+            nilai.remove(x, hadRemove++);
+        }
+        nilai.print();
+        inp.close();
+    }
+    
+}
+
