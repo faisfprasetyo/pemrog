@@ -1,0 +1,83 @@
+# pindah ke direktori home anda
+[First, let's make sure we're in your home directory (recall that ~ stands for your home directory)]
+cd home atau cd~??
+
+# buat satu folder kosong 'test'
+mkdir test
+
+# masuk ke direktori 'test'
+cd test
+
+# tampilkan path direktori saat ini
+pwd
+[pwd command, tells you what your current directory is]
+
+# buat file kosong bernama 'empty.txt'
+touch empty.txt
+5
+-----
+
+# copy file '/etc/timezone' ke direktori ini
+-> cp [source] [destination]
+cp /etc/timezone test
+
+# ubah nama file 'timezone' menjadi 'tz.txt'
+[You can move or rename a file with the mv command]
+-> mv [source] [destination]
+mv timezone tz.txt
+
+# list isi direktori ini
+ls test
+
+# pindah ke direktori parent
+[menggunakan perintah .. untuk merujuk ke direktori parent dari direktori saat ini]
+[kalau mau pindah ke direktori satu tingkat di atas cuup cd ..]
+[kalau mau ke dir /home ketik d $HOME atau cd~]
+cd ..
+
+# hapus direktori 'test' seisinya
+[To remove a folder and all its contents, you need to specify the -r (recursive) option]
+rm -r test
+
+-----
+
+# temukan file dengan nama 'fdisk' memakai `locate`
+locate fdisk
+-> locate [OPTION] 'PATTERN'
+
+# temukan file dengan nama 'fdisk' memakai `find`
+find -name fdisk
+
+# temukan file pada home anda yang ukurannya > 200 MB
+find -size +200M
+
+# temukan file pada home anda yang diubah < 3 hari
+[atime: access time; mtime: modify time; ctime: change time]
+find -mtime -3
+
+# temukan file pada home anda yang diakses > 30 hari
+find -atime +30
+
+-----
+
+# tampilkan 5 baris pertama keluaran perintah `last`
+head -5 last atau head -n 5 last [ini kalau last -> file]
+last | head -n 5 [ini kalau last -> perintah]
+
+# tampilkan dua baris terakhir file '/etc/passwd'
+tail -2 /etc/passwsd atau tail -n 2 /etc/passwd
+
+# cari file di '/usr/include' yang memuat kata 'sem_post'
+[find itu buat nyari file dsb]
+[grep buat nyari teks atau kata di dalem file; Mencetak baris teks yang cocok dengan suatu pola]
+-> grep [OPTION] 'PATTERN' FILE
+grep -r 'sem_post' /usr/include
+
+# tampilkan kolom 1 dan 5 dari file '/etc/passwd'
+awk '{print $1, $5}' /etc/passwd 
+
+# tampilkan isi file '/etc/motd' dalam huruf kapital
+awk '{print toupper($0)}' [/etc/motd]
+
+-----
+
